@@ -1,0 +1,21 @@
+{
+  "name": "the_sms_works_api",
+  "version": "1.0.0",
+  "description": "The_SMS_Works_provides_a_low_cost_reliable_SMS_API_for_developers__Pay_only_for_delivered_texts_all_failed_messages_are_refunded_",
+  "license": "Unlicense",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "superagent": "3.5.2"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
+}
