@@ -1,4 +1,4 @@
-# the_sms_works_api
+# The SMS Works API
 
 JavaScript client for The SMS Works API
 The SMS Works provides a low-cost, reliable SMS API for developers. Pay only for delivered texts, all failed messages are refunded.
