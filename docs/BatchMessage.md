@@ -7,5 +7,7 @@ Name | Type | Description | Notes
 **destinations** | **[String]** | Telephone numbers of each of the recipients | 
 **content** | **String** | Message to send to the recipient | 
 **schedule** | **String** | Date-time at which to send the batch. This is only used by the batch/schedule service. | 
+**tag** | **String** | An identifying label for the message, which you can use to filter and report on messages you&#39;ve sent later. Ideal for campaigns. | [optional] 
+**ttl** | **Number** | The number of minutes before the message is deleted. Optional. Omit to prevent delivery report deletion. | [optional] 
 
 

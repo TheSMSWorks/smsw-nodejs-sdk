@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **keyword** | **String** | The keyword used in the inbound message | [optional] 
 **from** | **String** | The date-time from which you would like matching messages | [optional] 
 **to** | **String** | The date-time to which you would like matching messages | [optional] 
+**metadata** | [**QueryMetadata**](QueryMetadata.md) |  | [optional] 
 
 

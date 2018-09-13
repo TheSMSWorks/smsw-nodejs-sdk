@@ -30,7 +30,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TheSmsWorksApi.SendMessageResponse();
+    instance = new TheSmsWorksApi.MetaData();
   });
 
   var getProperty = function(object, getter, property) {
@@ -49,28 +49,22 @@
       object[property] = value;
   }
 
-  describe('SendMessageResponse', function() {
-    it('should create an instance of SendMessageResponse', function() {
-      // uncomment below and update the code to test SendMessageResponse
-      //var instane = new TheSmsWorksApi.SendMessageResponse();
-      //expect(instance).to.be.a(TheSmsWorksApi.SendMessageResponse);
+  describe('MetaData', function() {
+    it('should create an instance of MetaData', function() {
+      // uncomment below and update the code to test MetaData
+      //var instane = new TheSmsWorksApi.MetaData();
+      //expect(instance).to.be.a(TheSmsWorksApi.MetaData);
     });
 
-    it('should have the property messageid (base name: "messageid")', function() {
-      // uncomment below and update the code to test the property messageid
-      //var instane = new TheSmsWorksApi.SendMessageResponse();
+    it('should have the property key (base name: "key")', function() {
+      // uncomment below and update the code to test the property key
+      //var instane = new TheSmsWorksApi.MetaData();
       //expect(instance).to.be();
     });
 
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instane = new TheSmsWorksApi.SendMessageResponse();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property credits (base name: "credits")', function() {
-      // uncomment below and update the code to test the property credits
-      //var instane = new TheSmsWorksApi.SendMessageResponse();
+    it('should have the property value (base name: "value")', function() {
+      // uncomment below and update the code to test the property value
+      //var instane = new TheSmsWorksApi.MetaData();
       //expect(instance).to.be();
     });
 

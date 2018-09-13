@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **created** | **String** |  | 
 **customerid** | **String** |  | 
 **destination** | **Number** |  | 
-**failureReason** | [**MessageResponseFailureReason**](MessageResponseFailureReason.md) |  | [optional] 
+**failurereason** | [**MessageResponseFailurereason**](MessageResponseFailurereason.md) |  | [optional] 
 **id** | **String** |  | [optional] 
 **keyword** | **String** |  | 
 **messageid** | **String** |  | 

@@ -25,7 +25,7 @@
     if (!root.TheSmsWorksApi) {
       root.TheSmsWorksApi = {};
     }
-    root.TheSmsWorksApi.BatchMessageResponse = factory(root.TheSmsWorksApi.ApiClient);
+    root.TheSmsWorksApi.MetaData = factory(root.TheSmsWorksApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,54 +34,55 @@
 
 
   /**
-   * The BatchMessageResponse model module.
-   * @module model/BatchMessageResponse
+   * The MetaData model module.
+   * @module model/MetaData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>BatchMessageResponse</code>.
-   * @alias module:model/BatchMessageResponse
+   * Constructs a new <code>MetaData</code>.
+   * Key/value pair that will be returned to you in the API call response.
+   * @alias module:model/MetaData
    * @class
-   * @param batchid {String} 
-   * @param status {String} 
    */
-  var exports = function(batchid, status) {
+  var exports = function() {
     var _this = this;
 
-    _this['batchid'] = batchid;
-    _this['status'] = status;
+
+
   };
 
   /**
-   * Constructs a <code>BatchMessageResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MetaData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/BatchMessageResponse} obj Optional instance to populate.
-   * @return {module:model/BatchMessageResponse} The populated <code>BatchMessageResponse</code> instance.
+   * @param {module:model/MetaData} obj Optional instance to populate.
+   * @return {module:model/MetaData} The populated <code>MetaData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('batchid')) {
-        obj['batchid'] = ApiClient.convertToType(data['batchid'], 'String');
+      if (data.hasOwnProperty('key')) {
+        obj['key'] = ApiClient.convertToType(data['key'], 'String');
       }
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('value')) {
+        obj['value'] = ApiClient.convertToType(data['value'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} batchid
+   * key of the key/value pair
+   * @member {String} key
    */
-  exports.prototype['batchid'] = undefined;
+  exports.prototype['key'] = undefined;
   /**
-   * @member {String} status
+   * value of the key/value pair
+   * @member {String} value
    */
-  exports.prototype['status'] = undefined;
+  exports.prototype['value'] = undefined;
 
 
 

@@ -30,7 +30,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TheSmsWorksApi.SendMessageResponse();
+    instance = new TheSmsWorksApi.MessageMetadata();
   });
 
   var getProperty = function(object, getter, property) {
@@ -49,28 +49,16 @@
       object[property] = value;
   }
 
-  describe('SendMessageResponse', function() {
-    it('should create an instance of SendMessageResponse', function() {
-      // uncomment below and update the code to test SendMessageResponse
-      //var instane = new TheSmsWorksApi.SendMessageResponse();
-      //expect(instance).to.be.a(TheSmsWorksApi.SendMessageResponse);
+  describe('MessageMetadata', function() {
+    it('should create an instance of MessageMetadata', function() {
+      // uncomment below and update the code to test MessageMetadata
+      //var instane = new TheSmsWorksApi.MessageMetadata();
+      //expect(instance).to.be.a(TheSmsWorksApi.MessageMetadata);
     });
 
-    it('should have the property messageid (base name: "messageid")', function() {
-      // uncomment below and update the code to test the property messageid
-      //var instane = new TheSmsWorksApi.SendMessageResponse();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instane = new TheSmsWorksApi.SendMessageResponse();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property credits (base name: "credits")', function() {
-      // uncomment below and update the code to test the property credits
-      //var instane = new TheSmsWorksApi.SendMessageResponse();
+    it('should have the property schema (base name: "schema")', function() {
+      // uncomment below and update the code to test the property schema
+      //var instane = new TheSmsWorksApi.MessageMetadata();
       //expect(instance).to.be();
     });
 

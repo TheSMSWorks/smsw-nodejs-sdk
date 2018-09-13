@@ -16,72 +16,63 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/MetaData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./MetaData'));
   } else {
     // Browser globals (root is window)
     if (!root.TheSmsWorksApi) {
       root.TheSmsWorksApi = {};
     }
-    root.TheSmsWorksApi.BatchMessageResponse = factory(root.TheSmsWorksApi.ApiClient);
+    root.TheSmsWorksApi.QueryMetadata = factory(root.TheSmsWorksApi.ApiClient, root.TheSmsWorksApi.MetaData);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, MetaData) {
   'use strict';
 
 
 
 
   /**
-   * The BatchMessageResponse model module.
-   * @module model/BatchMessageResponse
+   * The QueryMetadata model module.
+   * @module model/QueryMetadata
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>BatchMessageResponse</code>.
-   * @alias module:model/BatchMessageResponse
+   * Constructs a new <code>QueryMetadata</code>.
+   * An array of objects containing metadata key/value pairs that have been saved on messages.
+   * @alias module:model/QueryMetadata
    * @class
-   * @param batchid {String} 
-   * @param status {String} 
    */
-  var exports = function(batchid, status) {
+  var exports = function() {
     var _this = this;
 
-    _this['batchid'] = batchid;
-    _this['status'] = status;
+
   };
 
   /**
-   * Constructs a <code>BatchMessageResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>QueryMetadata</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/BatchMessageResponse} obj Optional instance to populate.
-   * @return {module:model/BatchMessageResponse} The populated <code>BatchMessageResponse</code> instance.
+   * @param {module:model/QueryMetadata} obj Optional instance to populate.
+   * @return {module:model/QueryMetadata} The populated <code>QueryMetadata</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('batchid')) {
-        obj['batchid'] = ApiClient.convertToType(data['batchid'], 'String');
-      }
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('schema')) {
+        obj['schema'] = MetaData.constructFromObject(data['schema']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} batchid
+   * @member {module:model/MetaData} schema
    */
-  exports.prototype['batchid'] = undefined;
-  /**
-   * @member {String} status
-   */
-  exports.prototype['status'] = undefined;
+  exports.prototype['schema'] = undefined;
 
 
 

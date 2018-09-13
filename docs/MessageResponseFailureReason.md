@@ -1,4 +1,4 @@
-# TheSmsWorksApi.MessageResponseFailureReason
+# TheSmsWorksApi.MessageResponseFailurereason
 
 ## Properties
 Name | Type | Description | Notes
