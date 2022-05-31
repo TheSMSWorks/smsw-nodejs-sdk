@@ -3,19 +3,19 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**batchid** | **String** |  | 
+**batchid** | **String** |  | [optional] 
 **content** | **String** |  | 
 **created** | **String** |  | 
 **customerid** | **String** |  | 
-**destination** | **Number** |  | 
-**failurereason** | [**MessageResponseFailurereason**](MessageResponseFailurereason.md) |  | [optional] 
+**deliveryreporturl** | **String** |  | [optional] 
+**destination** | [**BigDecimal**](BigDecimal.md) |  | 
+**failurereason** | **Object** |  | [optional] 
 **id** | **String** |  | [optional] 
-**keyword** | **String** |  | 
+**identifier** | **String** |  | [optional] 
+**keyword** | **String** |  | [optional] 
 **messageid** | **String** |  | 
 **modified** | **String** |  | 
 **schedule** | **String** |  | 
 **status** | **String** |  | 
 **sender** | **String** |  | 
 **tag** | **String** |  | 
-
-

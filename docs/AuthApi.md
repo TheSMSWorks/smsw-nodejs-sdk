@@ -7,39 +7,35 @@ Method | HTTP request | Description
 [**keySecret**](AuthApi.md#keySecret) | **GET** /auth/getApiKey | 
 [**login**](AuthApi.md#login) | **POST** /auth/token | 
 
-
 <a name="keySecret"></a>
 # **keySecret**
 > ApiKeyResponse keySecret(customerid)
 
 
 
-Generates an API Key/Secret pair
+Utility method. Please generate your API key by following the instructions on your account page at https://thesmsworks.co.uk/user/login
 
 ### Example
 ```javascript
-var TheSmsWorksApi = require('the_sms_works_api');
+import TheSmsWorksApi from 'the_sms_works_api';
 
-var apiInstance = new TheSmsWorksApi.AuthApi();
+let apiInstance = new TheSmsWorksApi.AuthApi();
+let customerid = "customerid_example"; // String | Utility method. Please generate your API key by following the instructions on your account page at https://thesmsworks.co.uk/user/login
 
-var customerid = "customerid_example"; // String | The Customer ID
-
-
-var callback = function(error, data, response) {
+apiInstance.keySecret(customerid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.keySecret(customerid, callback);
+});
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customerid** | **String**| The Customer ID | 
+ **customerid** | **String**| Utility method. Please generate your API key by following the instructions on your account page at https://thesmsworks.co.uk/user/login | 
 
 ### Return type
 
@@ -51,41 +47,38 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json;charset=UTF-8
 
 <a name="login"></a>
 # **login**
-> TokenResponse login(credentials)
+> TokenResponse login(body)
 
 
 
-Generates a Json Web Token
+Generates a JSON Web Token for including in the Authorization header of all your calls to the API. This only needs to be done once. Generate the customer ID, API Key &amp; Secret required for this call from the API Key tab your account page.
 
 ### Example
 ```javascript
-var TheSmsWorksApi = require('the_sms_works_api');
+import TheSmsWorksApi from 'the_sms_works_api';
 
-var apiInstance = new TheSmsWorksApi.AuthApi();
+let apiInstance = new TheSmsWorksApi.AuthApi();
+let body = new TheSmsWorksApi.Login(); // Login | API Key & Secret
 
-var credentials = new TheSmsWorksApi.Login(); // Login | API Key & Secret
-
-
-var callback = function(error, data, response) {
+apiInstance.login(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.login(credentials, callback);
+});
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials** | [**Login**](Login.md)| API Key &amp; Secret | 
+ **body** | [**Login**](Login.md)| API Key &amp; Secret | 
 
 ### Return type
 

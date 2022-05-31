@@ -1,6 +1,7 @@
-# TheSmsWorksApi.TokenResponse
+# TheSmsWorksApi.DeletedMessageResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**token** | **String** |  | 
+**messageid** | **String** |  | 
+**status** | **String** |  | 

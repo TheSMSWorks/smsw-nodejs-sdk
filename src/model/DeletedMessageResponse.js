@@ -14,41 +14,41 @@
 import ApiClient from '../ApiClient';
 
 /**
-* The BatchMessageResponse model module.
-* @module model/BatchMessageResponse
+* The DeletedMessageResponse model module.
+* @module model/DeletedMessageResponse
 * @version 1.6.0
 */
-export default class BatchMessageResponse {
+export default class DeletedMessageResponse {
     /**
-    * Constructs a new <code>BatchMessageResponse</code>.
-    * @alias module:model/BatchMessageResponse
+    * Constructs a new <code>DeletedMessageResponse</code>.
+    * @alias module:model/DeletedMessageResponse
     * @class
-    * @param batchid {String} 
+    * @param messageid {String} 
     * @param status {String} 
     */
 
-    constructor(batchid, status) {
+    constructor(messageid, status) {
         
         
-        this['batchid'] = batchid;
+        this['messageid'] = messageid;
         this['status'] = status;
         
     }
 
     /**
-    * Constructs a <code>BatchMessageResponse</code> from a plain JavaScript object, optionally creating a new instance.
+    * Constructs a <code>DeletedMessageResponse</code> from a plain JavaScript object, optionally creating a new instance.
     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
     * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:model/BatchMessageResponse} obj Optional instance to populate.
-    * @return {module:model/BatchMessageResponse} The populated <code>BatchMessageResponse</code> instance.
+    * @param {module:model/DeletedMessageResponse} obj Optional instance to populate.
+    * @return {module:model/DeletedMessageResponse} The populated <code>DeletedMessageResponse</code> instance.
     */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new BatchMessageResponse();
+            obj = obj || new DeletedMessageResponse();
                         
             
-            if (data.hasOwnProperty('batchid')) {
-                obj['batchid'] = ApiClient.convertToType(data['batchid'], 'String');
+            if (data.hasOwnProperty('messageid')) {
+                obj['messageid'] = ApiClient.convertToType(data['messageid'], 'String');
             }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
@@ -58,9 +58,9 @@ export default class BatchMessageResponse {
     }
 
     /**
-    * @member {String} batchid
+    * @member {String} messageid
     */
-    batchid = undefined;
+    messageid = undefined;
     /**
     * @member {String} status
     */
