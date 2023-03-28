@@ -1,9 +1,12 @@
 # TheSmsWorksApi.ScheduledMessagesResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **String** | The status of the scheduled message (either &#x27;SCHEDULED&#x27;, &#x27;PROCESSED&#x27; or &#x27;CANCELLED&#x27;) | [optional] 
+**status** | **String** | The status of the scheduled message (either &#39;SCHEDULED&#39;, &#39;PROCESSED&#39; or &#39;CANCELLED&#39;) | [optional] 
 **id** | **String** | The scheduled message ID | [optional] 
 **batch** | **Boolean** | Describes whether the a batch of messages has been scheduled, or just a single message | [optional] 
-**message** | **Object** |  | [optional] 
+**message** | [**ScheduledMessagesResponseMessage**](ScheduledMessagesResponseMessage.md) |  | [optional] 
+
+

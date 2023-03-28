@@ -4,21 +4,23 @@ All URIs are relative to *https://api.thesmsworks.co.uk/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**credits**](CreditsApi.md#credits) | **GET** /credits/balance | 
+[**creditsBalanceGet**](CreditsApi.md#creditsBalanceGet) | **GET** /credits/balance | 
 
-<a name="credits"></a>
-# **credits**
-> CreditsResponse credits()
+
+
+## creditsBalanceGet
+
+> CreditsResponse creditsBalanceGet()
 
 
 
 Returns the number of credits currently available on the account
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -26,7 +28,7 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.CreditsApi();
-apiInstance.credits((error, data, response) => {
+apiInstance.creditsBalanceGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -36,6 +38,7 @@ apiInstance.credits((error, data, response) => {
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -48,6 +51,6 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 

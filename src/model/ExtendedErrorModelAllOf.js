@@ -14,20 +14,20 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The ScheduledBatchResponse model module.
- * @module model/ScheduledBatchResponse
+ * The ExtendedErrorModelAllOf model module.
+ * @module model/ExtendedErrorModelAllOf
  * @version 1.8.0
  */
-class ScheduledBatchResponse {
+class ExtendedErrorModelAllOf {
     /**
-     * Constructs a new <code>ScheduledBatchResponse</code>.
-     * @alias module:model/ScheduledBatchResponse
-     * @param batchid {String} 
+     * Constructs a new <code>ExtendedErrorModelAllOf</code>.
+     * @alias module:model/ExtendedErrorModelAllOf
+     * @param errorCode {Number} Numeric code used to identify the error. Integer.
      * @param status {String} 
      */
-    constructor(batchid, status) { 
+    constructor(errorCode, status) { 
         
-        ScheduledBatchResponse.initialize(this, batchid, status);
+        ExtendedErrorModelAllOf.initialize(this, errorCode, status);
     }
 
     /**
@@ -35,47 +35,46 @@ class ScheduledBatchResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, batchid, status) { 
-        obj['batchid'] = batchid;
+    static initialize(obj, errorCode, status) { 
+        obj['errorCode'] = errorCode;
         obj['status'] = status;
     }
 
     /**
-     * Constructs a <code>ScheduledBatchResponse</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ExtendedErrorModelAllOf</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/ScheduledBatchResponse} obj Optional instance to populate.
-     * @return {module:model/ScheduledBatchResponse} The populated <code>ScheduledBatchResponse</code> instance.
+     * @param {module:model/ExtendedErrorModelAllOf} obj Optional instance to populate.
+     * @return {module:model/ExtendedErrorModelAllOf} The populated <code>ExtendedErrorModelAllOf</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new ScheduledBatchResponse();
+            obj = obj || new ExtendedErrorModelAllOf();
 
-            if (data.hasOwnProperty('batchid')) {
-                obj['batchid'] = ApiClient.convertToType(data['batchid'], 'String');
+            if (data.hasOwnProperty('errorCode')) {
+                obj['errorCode'] = ApiClient.convertToType(data['errorCode'], 'Number');
             }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
+            }
+            if (data.hasOwnProperty('permanent')) {
+                obj['permanent'] = ApiClient.convertToType(data['permanent'], 'Boolean');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>ScheduledBatchResponse</code>.
+     * Validates the JSON data with respect to <code>ExtendedErrorModelAllOf</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ScheduledBatchResponse</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExtendedErrorModelAllOf</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of ScheduledBatchResponse.RequiredProperties) {
+        for (const property of ExtendedErrorModelAllOf.RequiredProperties) {
             if (!data[property]) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
-        }
-        // ensure the json data is a string
-        if (data['batchid'] && !(typeof data['batchid'] === 'string' || data['batchid'] instanceof String)) {
-            throw new Error("Expected the field `batchid` to be a primitive type in the JSON string but got " + data['batchid']);
         }
         // ensure the json data is a string
         if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
@@ -88,22 +87,28 @@ class ScheduledBatchResponse {
 
 }
 
-ScheduledBatchResponse.RequiredProperties = ["batchid", "status"];
+ExtendedErrorModelAllOf.RequiredProperties = ["errorCode", "status"];
 
 /**
- * @member {String} batchid
+ * Numeric code used to identify the error. Integer.
+ * @member {Number} errorCode
  */
-ScheduledBatchResponse.prototype['batchid'] = undefined;
+ExtendedErrorModelAllOf.prototype['errorCode'] = undefined;
 
 /**
  * @member {String} status
  */
-ScheduledBatchResponse.prototype['status'] = undefined;
+ExtendedErrorModelAllOf.prototype['status'] = undefined;
+
+/**
+ * @member {Boolean} permanent
+ */
+ExtendedErrorModelAllOf.prototype['permanent'] = undefined;
 
 
 
 
 
 
-export default ScheduledBatchResponse;
+export default ExtendedErrorModelAllOf;
 

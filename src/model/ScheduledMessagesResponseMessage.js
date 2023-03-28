@@ -12,21 +12,21 @@
  */
 
 import ApiClient from '../ApiClient';
-import MetaData from './MetaData';
+import ScheduledMessage from './ScheduledMessage';
 
 /**
- * The MessageMetadata model module.
- * @module model/MessageMetadata
+ * The ScheduledMessagesResponseMessage model module.
+ * @module model/ScheduledMessagesResponseMessage
  * @version 1.8.0
  */
-class MessageMetadata {
+class ScheduledMessagesResponseMessage {
     /**
-     * Constructs a new <code>MessageMetadata</code>.
-     * @alias module:model/MessageMetadata
+     * Constructs a new <code>ScheduledMessagesResponseMessage</code>.
+     * @alias module:model/ScheduledMessagesResponseMessage
      */
     constructor() { 
         
-        MessageMetadata.initialize(this);
+        ScheduledMessagesResponseMessage.initialize(this);
     }
 
     /**
@@ -38,32 +38,32 @@ class MessageMetadata {
     }
 
     /**
-     * Constructs a <code>MessageMetadata</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ScheduledMessagesResponseMessage</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/MessageMetadata} obj Optional instance to populate.
-     * @return {module:model/MessageMetadata} The populated <code>MessageMetadata</code> instance.
+     * @param {module:model/ScheduledMessagesResponseMessage} obj Optional instance to populate.
+     * @return {module:model/ScheduledMessagesResponseMessage} The populated <code>ScheduledMessagesResponseMessage</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new MessageMetadata();
+            obj = obj || new ScheduledMessagesResponseMessage();
 
             if (data.hasOwnProperty('schema')) {
-                obj['schema'] = MetaData.constructFromObject(data['schema']);
+                obj['schema'] = ScheduledMessage.constructFromObject(data['schema']);
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>MessageMetadata</code>.
+     * Validates the JSON data with respect to <code>ScheduledMessagesResponseMessage</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>MessageMetadata</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ScheduledMessagesResponseMessage</code>.
      */
     static validateJSON(data) {
         // validate the optional field `schema`
         if (data['schema']) { // data not null
-          MetaData.validateJSON(data['schema']);
+          ScheduledMessage.validateJSON(data['schema']);
         }
 
         return true;
@@ -75,14 +75,14 @@ class MessageMetadata {
 
 
 /**
- * @member {module:model/MetaData} schema
+ * @member {module:model/ScheduledMessage} schema
  */
-MessageMetadata.prototype['schema'] = undefined;
+ScheduledMessagesResponseMessage.prototype['schema'] = undefined;
 
 
 
 
 
 
-export default MessageMetadata;
+export default ScheduledMessagesResponseMessage;
 

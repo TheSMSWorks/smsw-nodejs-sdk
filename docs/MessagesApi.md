@@ -4,30 +4,32 @@ All URIs are relative to *https://api.thesmsworks.co.uk/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelScheduledJob**](MessagesApi.md#cancelScheduledJob) | **DELETE** /messages/schedule/{messageid} | 
-[**deleteMessage**](MessagesApi.md#deleteMessage) | **DELETE** /messages/{messageid} | 
-[**getFailedMessages**](MessagesApi.md#getFailedMessages) | **POST** /messages/failed | 
-[**getInboxMessages**](MessagesApi.md#getInboxMessages) | **POST** /messages/inbox | 
-[**getMessageById**](MessagesApi.md#getMessageById) | **GET** /messages/{messageid} | 
-[**getMessages**](MessagesApi.md#getMessages) | **POST** /messages | 
-[**getScheduledMessages**](MessagesApi.md#getScheduledMessages) | **GET** /messages/schedule | 
+[**messageSchedulePost**](MessagesApi.md#messageSchedulePost) | **POST** /message/schedule | 
 [**messageSendPost**](MessagesApi.md#messageSendPost) | **POST** /message/send | 
-[**scheduleMessage**](MessagesApi.md#scheduleMessage) | **POST** /message/schedule | 
+[**messagesFailedPost**](MessagesApi.md#messagesFailedPost) | **POST** /messages/failed | 
+[**messagesInboxPost**](MessagesApi.md#messagesInboxPost) | **POST** /messages/inbox | 
+[**messagesMessageidDelete**](MessagesApi.md#messagesMessageidDelete) | **DELETE** /messages/{messageid} | 
+[**messagesMessageidGet**](MessagesApi.md#messagesMessageidGet) | **GET** /messages/{messageid} | 
+[**messagesPost**](MessagesApi.md#messagesPost) | **POST** /messages | 
+[**messagesScheduleGet**](MessagesApi.md#messagesScheduleGet) | **GET** /messages/schedule | 
+[**messagesScheduleMessageidDelete**](MessagesApi.md#messagesScheduleMessageidDelete) | **DELETE** /messages/schedule/{messageid} | 
 [**sendFlashMessage**](MessagesApi.md#sendFlashMessage) | **POST** /message/flash | 
 
-<a name="cancelScheduledJob"></a>
-# **cancelScheduledJob**
-> CancelledMessageResponse cancelScheduledJob(messageid)
+
+
+## messageSchedulePost
+
+> [ScheduledMessageResponse] messageSchedulePost(smsMessage)
 
 
 
-Cancels a scheduled SMS message
+Schedules an SMS message to be sent at the date-time you specify
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -35,9 +37,8 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.MessagesApi();
-let messageid = "messageid_example"; // String | The ID of the message you would like returned
-
-apiInstance.cancelScheduledJob(messageid, (error, data, response) => {
+let smsMessage = new TheSmsWorksApi.Message(); // Message | Message properties
+apiInstance.messageSchedulePost(smsMessage, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -48,13 +49,14 @@ apiInstance.cancelScheduledJob(messageid, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **messageid** | **String**| The ID of the message you would like returned | 
+ **smsMessage** | [**Message**](Message.md)| Message properties | 
 
 ### Return type
 
-[**CancelledMessageResponse**](CancelledMessageResponse.md)
+[**[ScheduledMessageResponse]**](ScheduledMessageResponse.md)
 
 ### Authorization
 
@@ -62,22 +64,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
-
-<a name="deleteMessage"></a>
-# **deleteMessage**
-> DeletedMessageResponse deleteMessage(messageid)
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
 
 
+## messageSendPost
 
-Delete the message with the mathcing messageid
+> SendMessageResponse messageSendPost(smsMessage)
+
+
+
+Send an SMS Message
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -85,9 +88,8 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.MessagesApi();
-let messageid = "messageid_example"; // String | The ID of the message you would like returned
-
-apiInstance.deleteMessage(messageid, (error, data, response) => {
+let smsMessage = new TheSmsWorksApi.Message(); // Message | Message properties
+apiInstance.messageSendPost(smsMessage, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -97,6 +99,160 @@ apiInstance.deleteMessage(messageid, (error, data, response) => {
 ```
 
 ### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **smsMessage** | [**Message**](Message.md)| Message properties | 
+
+### Return type
+
+[**SendMessageResponse**](SendMessageResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
+
+
+## messagesFailedPost
+
+> [MessageResponse] messagesFailedPost(query)
+
+
+
+Get failed messages matching your search criteria
+
+### Example
+
+```javascript
+import TheSmsWorksApi from 'the_sms_works_api';
+let defaultClient = TheSmsWorksApi.ApiClient.instance;
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
+
+let apiInstance = new TheSmsWorksApi.MessagesApi();
+let query = new TheSmsWorksApi.Query(); // Query | 
+apiInstance.messagesFailedPost(query, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | [**Query**](Query.md)|  | 
+
+### Return type
+
+[**[MessageResponse]**](MessageResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
+
+
+## messagesInboxPost
+
+> [MessageResponse] messagesInboxPost(query)
+
+
+
+Get unread uncoming messages matching your search criteria
+
+### Example
+
+```javascript
+import TheSmsWorksApi from 'the_sms_works_api';
+let defaultClient = TheSmsWorksApi.ApiClient.instance;
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
+
+let apiInstance = new TheSmsWorksApi.MessagesApi();
+let query = new TheSmsWorksApi.Query(); // Query | 
+apiInstance.messagesInboxPost(query, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | [**Query**](Query.md)|  | 
+
+### Return type
+
+[**[MessageResponse]**](MessageResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
+
+
+## messagesMessageidDelete
+
+> DeletedMessageResponse messagesMessageidDelete(messageid)
+
+
+
+Delete the message with the mathcing messageid
+
+### Example
+
+```javascript
+import TheSmsWorksApi from 'the_sms_works_api';
+let defaultClient = TheSmsWorksApi.ApiClient.instance;
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
+
+let apiInstance = new TheSmsWorksApi.MessagesApi();
+let messageid = "messageid_example"; // String | The ID of the message you would like returned
+apiInstance.messagesMessageidDelete(messageid, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -112,122 +268,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
-
-<a name="getFailedMessages"></a>
-# **getFailedMessages**
-> [MessageResponse] getFailedMessages(body)
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 
 
+## messagesMessageidGet
 
-Get failed messages matching your search criteria
-
-### Example
-```javascript
-import TheSmsWorksApi from 'the_sms_works_api';
-let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
-// Configure API key authorization: JWT
-let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
-
-let apiInstance = new TheSmsWorksApi.MessagesApi();
-let body = new TheSmsWorksApi.Query(); // Query | 
-
-apiInstance.getFailedMessages(body, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Query**](Query.md)|  | 
-
-### Return type
-
-[**[MessageResponse]**](MessageResponse.md)
-
-### Authorization
-
-[JWT](../README.md#JWT)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
-
-<a name="getInboxMessages"></a>
-# **getInboxMessages**
-> [MessageResponse] getInboxMessages(body)
-
-
-
-Get unread uncoming messages matching your search criteria
-
-### Example
-```javascript
-import TheSmsWorksApi from 'the_sms_works_api';
-let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
-// Configure API key authorization: JWT
-let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
-
-let apiInstance = new TheSmsWorksApi.MessagesApi();
-let body = new TheSmsWorksApi.Query(); // Query | 
-
-apiInstance.getInboxMessages(body, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Query**](Query.md)|  | 
-
-### Return type
-
-[**[MessageResponse]**](MessageResponse.md)
-
-### Authorization
-
-[JWT](../README.md#JWT)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
-
-<a name="getMessageById"></a>
-# **getMessageById**
-> MessageResponse getMessageById(messageid)
+> MessageResponse messagesMessageidGet(messageid)
 
 
 
 Retrieve a logged message by the message ID
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -236,8 +293,7 @@ JWT.apiKey = 'YOUR API KEY';
 
 let apiInstance = new TheSmsWorksApi.MessagesApi();
 let messageid = "messageid_example"; // String | The ID of the message you would like returned
-
-apiInstance.getMessageById(messageid, (error, data, response) => {
+apiInstance.messagesMessageidGet(messageid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -247,6 +303,7 @@ apiInstance.getMessageById(messageid, (error, data, response) => {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -262,22 +319,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 
-<a name="getMessages"></a>
-# **getMessages**
-> [MessageResponse] getMessages(body)
+
+## messagesPost
+
+> [MessageResponse] messagesPost(query)
 
 
 
 Retrieve up to 1000 messages matching your search criteria
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -285,9 +343,8 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.MessagesApi();
-let body = new TheSmsWorksApi.Query(); // Query | 
-
-apiInstance.getMessages(body, (error, data, response) => {
+let query = new TheSmsWorksApi.Query(); // Query | 
+apiInstance.messagesPost(query, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -298,9 +355,10 @@ apiInstance.getMessages(body, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Query**](Query.md)|  | 
+ **query** | [**Query**](Query.md)|  | 
 
 ### Return type
 
@@ -312,22 +370,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
 
-<a name="getScheduledMessages"></a>
-# **getScheduledMessages**
-> ScheduledMessagesResponse getScheduledMessages()
+
+## messagesScheduleGet
+
+> ScheduledMessagesResponse messagesScheduleGet()
 
 
 
 Returns a list of messages scheduled from your account, comprising any messages scheduled in the last 3 months and any scheduled to send in the future
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -335,7 +394,7 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.MessagesApi();
-apiInstance.getScheduledMessages((error, data, response) => {
+apiInstance.messagesScheduleGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -345,6 +404,7 @@ apiInstance.getScheduledMessages((error, data, response) => {
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -357,22 +417,23 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
-
-<a name="messageSendPost"></a>
-# **messageSendPost**
-> SendMessageResponse messageSendPost(body)
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 
 
+## messagesScheduleMessageidDelete
 
-Send an SMS Message
+> CancelledMessageResponse messagesScheduleMessageidDelete(messageid)
+
+
+
+Cancels a scheduled SMS message
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -380,9 +441,8 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.MessagesApi();
-let body = new TheSmsWorksApi.Message(); // Message | Message properties
-
-apiInstance.messageSendPost(body, (error, data, response) => {
+let messageid = "messageid_example"; // String | The ID of the message you would like returned
+apiInstance.messagesScheduleMessageidDelete(messageid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -393,13 +453,14 @@ apiInstance.messageSendPost(body, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Message**](Message.md)| Message properties | 
+ **messageid** | **String**| The ID of the message you would like returned | 
 
 ### Return type
 
-[**SendMessageResponse**](SendMessageResponse.md)
+[**CancelledMessageResponse**](CancelledMessageResponse.md)
 
 ### Authorization
 
@@ -407,72 +468,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
-
-<a name="scheduleMessage"></a>
-# **scheduleMessage**
-> [ScheduledMessageResponse] scheduleMessage(body)
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 
 
+## sendFlashMessage
 
-Schedules an SMS message to be sent at the date-time you specify
-
-### Example
-```javascript
-import TheSmsWorksApi from 'the_sms_works_api';
-let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
-// Configure API key authorization: JWT
-let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
-
-let apiInstance = new TheSmsWorksApi.MessagesApi();
-let body = new TheSmsWorksApi.Message(); // Message | Message properties
-
-apiInstance.scheduleMessage(body, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Message**](Message.md)| Message properties | 
-
-### Return type
-
-[**[ScheduledMessageResponse]**](ScheduledMessageResponse.md)
-
-### Authorization
-
-[JWT](../README.md#JWT)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
-
-<a name="sendFlashMessage"></a>
-# **sendFlashMessage**
-> SendMessageResponse sendFlashMessage(body)
+> SendMessageResponse sendFlashMessage(smsMessage)
 
 
 
 Sends an SMS flash message, which appears on the recipients lock screen
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -480,9 +492,8 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.MessagesApi();
-let body = new TheSmsWorksApi.Message(); // Message | Message properties
-
-apiInstance.sendFlashMessage(body, (error, data, response) => {
+let smsMessage = new TheSmsWorksApi.Message(); // Message | Message properties
+apiInstance.sendFlashMessage(smsMessage, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -493,9 +504,10 @@ apiInstance.sendFlashMessage(body, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Message**](Message.md)| Message properties | 
+ **smsMessage** | [**Message**](Message.md)| Message properties | 
 
 ### Return type
 
@@ -507,6 +519,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
 

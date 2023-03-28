@@ -4,24 +4,27 @@ All URIs are relative to *https://api.thesmsworks.co.uk/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelScheduledBatchJob**](BatchMessagesApi.md#cancelScheduledBatchJob) | **DELETE** /batches/schedule/{batchid} | 
-[**getBatchById**](BatchMessagesApi.md#getBatchById) | **GET** /batch/{batchid} | 
-[**scheduleBatch**](BatchMessagesApi.md#scheduleBatch) | **POST** /batch/schedule | 
-[**sendBatch**](BatchMessagesApi.md#sendBatch) | **POST** /batch/send | 
-
-<a name="cancelScheduledBatchJob"></a>
-# **cancelScheduledBatchJob**
-> CancelledMessageResponse cancelScheduledBatchJob(batchid)
+[**batchAnyPost**](BatchMessagesApi.md#batchAnyPost) | **POST** /batch/any | 
+[**batchBatchidGet**](BatchMessagesApi.md#batchBatchidGet) | **GET** /batch/{batchid} | 
+[**batchSchedulePost**](BatchMessagesApi.md#batchSchedulePost) | **POST** /batch/schedule | 
+[**batchSendPost**](BatchMessagesApi.md#batchSendPost) | **POST** /batch/send | 
+[**batchesScheduleBatchidDelete**](BatchMessagesApi.md#batchesScheduleBatchidDelete) | **DELETE** /batches/schedule/{batchid} | 
 
 
 
-Cancels a scheduled SMS message
+## batchAnyPost
+
+> BatchMessageResponse batchAnyPost(messages)
+
+
+
+Sends a collection of unique SMS messages. Batches may contain up to 5000 messages at a time.
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -29,9 +32,8 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.BatchMessagesApi();
-let batchid = "batchid_example"; // String | The ID of the batch you would like returned
-
-apiInstance.cancelScheduledBatchJob(batchid, (error, data, response) => {
+let messages = [new TheSmsWorksApi.Message()]; // [Message] | An array of messages
+apiInstance.batchAnyPost(messages, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -42,13 +44,14 @@ apiInstance.cancelScheduledBatchJob(batchid, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **batchid** | **String**| The ID of the batch you would like returned | 
+ **messages** | [**[Message]**](Message.md)| An array of messages | 
 
 ### Return type
 
-[**CancelledMessageResponse**](CancelledMessageResponse.md)
+[**BatchMessageResponse**](BatchMessageResponse.md)
 
 ### Authorization
 
@@ -56,22 +59,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
 
-<a name="getBatchById"></a>
-# **getBatchById**
-> [MessageResponse] getBatchById(batchid)
+
+## batchBatchidGet
+
+> [MessageResponse] batchBatchidGet(batchid)
 
 
 
 Retrieve all messages in a batch with the given batch ID
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -80,8 +84,7 @@ JWT.apiKey = 'YOUR API KEY';
 
 let apiInstance = new TheSmsWorksApi.BatchMessagesApi();
 let batchid = "batchid_example"; // String | The ID of the batch you would like returned
-
-apiInstance.getBatchById(batchid, (error, data, response) => {
+apiInstance.batchBatchidGet(batchid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -91,6 +94,7 @@ apiInstance.getBatchById(batchid, (error, data, response) => {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -106,22 +110,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 
-<a name="scheduleBatch"></a>
-# **scheduleBatch**
-> ScheduledBatchResponse scheduleBatch(body)
+
+## batchSchedulePost
+
+> ScheduledBatchResponse batchSchedulePost(smsMessage)
 
 
 
 Schedules a batch of SMS messages to be sent at the date time you specify
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -129,9 +134,8 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.BatchMessagesApi();
-let body = new TheSmsWorksApi.BatchMessage(); // BatchMessage | Message properties
-
-apiInstance.scheduleBatch(body, (error, data, response) => {
+let smsMessage = new TheSmsWorksApi.BatchMessage(); // BatchMessage | Message properties
+apiInstance.batchSchedulePost(smsMessage, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -142,9 +146,10 @@ apiInstance.scheduleBatch(body, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**BatchMessage**](BatchMessage.md)| Message properties | 
+ **smsMessage** | [**BatchMessage**](BatchMessage.md)| Message properties | 
 
 ### Return type
 
@@ -156,22 +161,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
-
-<a name="sendBatch"></a>
-# **sendBatch**
-> BatchMessageResponse sendBatch(body)
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
 
 
+## batchSendPost
 
-Send a single SMS message to multiple recipients
+> BatchMessageResponse batchSendPost(smsMessage)
+
+
+
+Send a single SMS message to multiple recipients.  Batches may contain up to 5000 messages at a time.
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
 let defaultClient = TheSmsWorksApi.ApiClient.instance;
-
 // Configure API key authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
 JWT.apiKey = 'YOUR API KEY';
@@ -179,9 +185,8 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.BatchMessagesApi();
-let body = new TheSmsWorksApi.BatchMessage(); // BatchMessage | Message properties
-
-apiInstance.sendBatch(body, (error, data, response) => {
+let smsMessage = new TheSmsWorksApi.BatchMessage(); // BatchMessage | Message properties
+apiInstance.batchSendPost(smsMessage, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -192,9 +197,10 @@ apiInstance.sendBatch(body, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**BatchMessage**](BatchMessage.md)| Message properties | 
+ **smsMessage** | [**BatchMessage**](BatchMessage.md)| Message properties | 
 
 ### Return type
 
@@ -206,6 +212,57 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
+
+
+## batchesScheduleBatchidDelete
+
+> CancelledMessageResponse batchesScheduleBatchidDelete(batchid)
+
+
+
+Cancels a scheduled SMS message
+
+### Example
+
+```javascript
+import TheSmsWorksApi from 'the_sms_works_api';
+let defaultClient = TheSmsWorksApi.ApiClient.instance;
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
+
+let apiInstance = new TheSmsWorksApi.BatchMessagesApi();
+let batchid = "batchid_example"; // String | The ID of the batch you would like returned
+apiInstance.batchesScheduleBatchidDelete(batchid, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batchid** | **String**| The ID of the batch you would like returned | 
+
+### Return type
+
+[**CancelledMessageResponse**](CancelledMessageResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 

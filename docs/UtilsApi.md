@@ -4,25 +4,33 @@ All URIs are relative to *https://api.thesmsworks.co.uk/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getError**](UtilsApi.md#getError) | **GET** /utils/errors/{errorcode} | 
-[**test**](UtilsApi.md#test) | **GET** /utils/test | 
+[**utilsErrorsErrorcodeGet**](UtilsApi.md#utilsErrorsErrorcodeGet) | **GET** /utils/errors/{errorcode} | 
+[**utilsTestGet**](UtilsApi.md#utilsTestGet) | **GET** /utils/test | 
 
-<a name="getError"></a>
-# **getError**
-> ExtendedErrorModel getError(errorcode)
+
+
+## utilsErrorsErrorcodeGet
+
+> ExtendedErrorModel utilsErrorsErrorcodeGet(errorcode)
 
 
 
 Returns a sample error object for the given error code. Useful for designing code to react to errors when they occur for real.
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
+let defaultClient = TheSmsWorksApi.ApiClient.instance;
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.UtilsApi();
 let errorcode = "errorcode_example"; // String | The code of the error you would like returned
-
-apiInstance.getError(errorcode, (error, data, response) => {
+apiInstance.utilsErrorsErrorcodeGet(errorcode, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -32,6 +40,7 @@ apiInstance.getError(errorcode, (error, data, response) => {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -43,27 +52,35 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JWT](../README.md#JWT)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 
-<a name="test"></a>
-# **test**
-> TestResponse test()
+
+## utilsTestGet
+
+> TestResponse utilsTestGet()
 
 
 
 Returns the customer ID to the caller
 
 ### Example
+
 ```javascript
 import TheSmsWorksApi from 'the_sms_works_api';
+let defaultClient = TheSmsWorksApi.ApiClient.instance;
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.UtilsApi();
-apiInstance.test((error, data, response) => {
+apiInstance.utilsTestGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -73,6 +90,7 @@ apiInstance.test((error, data, response) => {
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -81,10 +99,10 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[JWT](../README.md#JWT)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 

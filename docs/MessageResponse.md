@@ -1,6 +1,7 @@
 # TheSmsWorksApi.MessageResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **batchid** | **String** |  | [optional] 
@@ -8,8 +9,8 @@ Name | Type | Description | Notes
 **created** | **String** |  | 
 **customerid** | **String** |  | 
 **deliveryreporturl** | **String** |  | [optional] 
-**destination** | [**BigDecimal**](BigDecimal.md) |  | 
-**failurereason** | **Object** |  | [optional] 
+**destination** | **Number** |  | 
+**failurereason** | [**MessageResponseFailurereason**](MessageResponseFailurereason.md) |  | [optional] 
 **id** | **String** |  | [optional] 
 **identifier** | **String** |  | [optional] 
 **keyword** | **String** |  | [optional] 
@@ -19,3 +20,5 @@ Name | Type | Description | Notes
 **status** | **String** |  | 
 **sender** | **String** |  | 
 **tag** | **String** |  | 
+
+
