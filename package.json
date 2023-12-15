@@ -1,7 +1,7 @@
 {
   "name": "the_sms_works_api",
-  "version": "1.8.2",
-  "description": "The SMS Works provides a low-cost, reliable SMS API for developers. Pay only for delivered texts, all failed messages are refunded.",
+  "version": "1.9.0",
+  "description": "The SMS Works provides a low-cost, reliable SMS API for developers. Pay only for delivered texts, all failed UK messages are refunded.",
   "license": "Unlicense",
   "main": "dist/index.js",
   "scripts": {

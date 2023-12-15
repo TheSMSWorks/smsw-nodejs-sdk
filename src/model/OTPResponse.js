@@ -14,20 +14,19 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The CancelledMessageResponse model module.
- * @module model/CancelledMessageResponse
+ * The OTPResponse model module.
+ * @module model/OTPResponse
  * @version 1.9.0
  */
-class CancelledMessageResponse {
+class OTPResponse {
     /**
-     * Constructs a new <code>CancelledMessageResponse</code>.
-     * @alias module:model/CancelledMessageResponse
-     * @param messageid {String} 
-     * @param status {String} 
+     * Constructs a new <code>OTPResponse</code>.
+     * Response schema for the /otp/send method
+     * @alias module:model/OTPResponse
      */
-    constructor(messageid, status) { 
+    constructor() { 
         
-        CancelledMessageResponse.initialize(this, messageid, status);
+        OTPResponse.initialize(this);
     }
 
     /**
@@ -35,21 +34,19 @@ class CancelledMessageResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, messageid, status) { 
-        obj['messageid'] = messageid;
-        obj['status'] = status;
+    static initialize(obj) { 
     }
 
     /**
-     * Constructs a <code>CancelledMessageResponse</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>OTPResponse</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CancelledMessageResponse} obj Optional instance to populate.
-     * @return {module:model/CancelledMessageResponse} The populated <code>CancelledMessageResponse</code> instance.
+     * @param {module:model/OTPResponse} obj Optional instance to populate.
+     * @return {module:model/OTPResponse} The populated <code>OTPResponse</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new CancelledMessageResponse();
+            obj = obj || new OTPResponse();
 
             if (data.hasOwnProperty('messageid')) {
                 obj['messageid'] = ApiClient.convertToType(data['messageid'], 'String');
@@ -57,22 +54,25 @@ class CancelledMessageResponse {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
             }
+            if (data.hasOwnProperty('credits')) {
+                obj['credits'] = ApiClient.convertToType(data['credits'], 'Number');
+            }
+            if (data.hasOwnProperty('creditsUsed')) {
+                obj['creditsUsed'] = ApiClient.convertToType(data['creditsUsed'], 'Number');
+            }
+            if (data.hasOwnProperty('messageparts')) {
+                obj['messageparts'] = ApiClient.convertToType(data['messageparts'], 'Number');
+            }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>CancelledMessageResponse</code>.
+     * Validates the JSON data with respect to <code>OTPResponse</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CancelledMessageResponse</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>OTPResponse</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of CancelledMessageResponse.RequiredProperties) {
-            if (!data[property]) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
         // ensure the json data is a string
         if (data['messageid'] && !(typeof data['messageid'] === 'string' || data['messageid'] instanceof String)) {
             throw new Error("Expected the field `messageid` to be a primitive type in the JSON string but got " + data['messageid']);
@@ -88,22 +88,42 @@ class CancelledMessageResponse {
 
 }
 
-CancelledMessageResponse.RequiredProperties = ["messageid", "status"];
+
 
 /**
+ * The messageid of the SMS used to send the OTP. Save this in your application to use when verifying passcodes.
  * @member {String} messageid
  */
-CancelledMessageResponse.prototype['messageid'] = undefined;
+OTPResponse.prototype['messageid'] = undefined;
 
 /**
+ * The initial status of the OTP message.
  * @member {String} status
  */
-CancelledMessageResponse.prototype['status'] = undefined;
+OTPResponse.prototype['status'] = undefined;
+
+/**
+ * The credit balance on your account
+ * @member {Number} credits
+ */
+OTPResponse.prototype['credits'] = undefined;
+
+/**
+ * The number of credits used to send this message
+ * @member {Number} creditsUsed
+ */
+OTPResponse.prototype['creditsUsed'] = undefined;
+
+/**
+ * The number of message parts used to send this message
+ * @member {Number} messageparts
+ */
+OTPResponse.prototype['messageparts'] = undefined;
 
 
 
 
 
 
-export default CancelledMessageResponse;
+export default OTPResponse;
 

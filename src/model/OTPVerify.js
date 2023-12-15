@@ -12,21 +12,21 @@
  */
 
 import ApiClient from '../ApiClient';
-import MetaData from './MetaData';
 
 /**
- * The MessageMetadata model module.
- * @module model/MessageMetadata
+ * The OTPVerify model module.
+ * @module model/OTPVerify
  * @version 1.9.0
  */
-class MessageMetadata {
+class OTPVerify {
     /**
-     * Constructs a new <code>MessageMetadata</code>.
-     * @alias module:model/MessageMetadata
+     * Constructs a new <code>OTPVerify</code>.
+     * Schema for the /oyp/verify method
+     * @alias module:model/OTPVerify
      */
     constructor() { 
         
-        MessageMetadata.initialize(this);
+        OTPVerify.initialize(this);
     }
 
     /**
@@ -38,32 +38,32 @@ class MessageMetadata {
     }
 
     /**
-     * Constructs a <code>MessageMetadata</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>OTPVerify</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/MessageMetadata} obj Optional instance to populate.
-     * @return {module:model/MessageMetadata} The populated <code>MessageMetadata</code> instance.
+     * @param {module:model/OTPVerify} obj Optional instance to populate.
+     * @return {module:model/OTPVerify} The populated <code>OTPVerify</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new MessageMetadata();
+            obj = obj || new OTPVerify();
 
-            if (data.hasOwnProperty('schema')) {
-                obj['schema'] = MetaData.constructFromObject(data['schema']);
+            if (data.hasOwnProperty('passcode')) {
+                obj['passcode'] = ApiClient.convertToType(data['passcode'], 'String');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>MessageMetadata</code>.
+     * Validates the JSON data with respect to <code>OTPVerify</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>MessageMetadata</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>OTPVerify</code>.
      */
     static validateJSON(data) {
-        // validate the optional field `schema`
-        if (data['schema']) { // data not null
-          MetaData.validateJSON(data['schema']);
+        // ensure the json data is a string
+        if (data['passcode'] && !(typeof data['passcode'] === 'string' || data['passcode'] instanceof String)) {
+            throw new Error("Expected the field `passcode` to be a primitive type in the JSON string but got " + data['passcode']);
         }
 
         return true;
@@ -75,14 +75,15 @@ class MessageMetadata {
 
 
 /**
- * @member {module:model/MetaData} schema
+ * One-Time Passcode submitted to your application
+ * @member {String} passcode
  */
-MessageMetadata.prototype['schema'] = undefined;
+OTPVerify.prototype['passcode'] = undefined;
 
 
 
 
 
 
-export default MessageMetadata;
+export default OTPVerify;
 

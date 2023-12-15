@@ -32,7 +32,7 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new TheSmsWorksApi.BatchMessagesApi();
-let messages = [new TheSmsWorksApi.Message()]; // [Message] | An array of messages
+let messages = {key: null}; // Object | An array of messages
 apiInstance.batchAnyPost(messages, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -47,7 +47,7 @@ apiInstance.batchAnyPost(messages, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **messages** | [**[Message]**](Message.md)| An array of messages | 
+ **messages** | **Object**| An array of messages | 
 
 ### Return type
 
